@@ -1,4 +1,3 @@
-````md
 # Kanban board — FastAPI + PostgreSQL + WebSocket + Vue 3 (TypeScript)
 
 Канбан-доска (To Do / In Progress / Done) с real-time синхронизацией, drag-and-drop и хранением в **PostgreSQL** (async драйвер `asyncpg`).
