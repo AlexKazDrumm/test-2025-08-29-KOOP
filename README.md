@@ -1,29 +1,61 @@
 # Kanban-доска с синхронизацией в реальном времени
 
-FastAPI и Vue-приложение с колонками, карточками, drag-and-drop и моментальным обновлением подключённых клиентов.
+Kanban-приложение на FastAPI и Vue с общей доской для всех подключённых
+клиентов.
 
-## Основные возможности
+## Возможности
 
-- Показывать колонки To Do, In Progress и Done.
-- Создавать, редактировать и удалять карточки.
-- Перемещать карточки внутри колонки и между колонками drag-and-drop.
-- Сохранять порядок и состояние доски в базе данных.
-- Предоставить API для всех операций.
-- Рассылать изменения через WebSocket всем подключённым клиентам.
-- Корректно восстанавливать актуальное состояние после переподключения.
-- Подготовить запуск клиента, API и базы через Docker Compose.
+- колонки To Do, In Progress и Done;
+- создание, редактирование и удаление карточек;
+- drag-and-drop внутри колонок и между ними;
+- сохранение порядка карточек;
+- синхронизация через WebSocket;
+- восстановление состояния после переподключения;
+- REST API для операций с доской.
 
-## Стек и технические детали
+## Стек
 
-- FastAPI, async SQLAlchemy, PostgreSQL, WebSocket, Vue 3, TypeScript и Vite.
-- Строка подключения и адрес API задаются конфигурацией.
+- Vue 3, TypeScript, Vite;
+- FastAPI, async SQLAlchemy, WebSocket;
+- PostgreSQL;
+- Docker Compose.
 
 ## Запуск
 
-- Если требуется конфигурация, скопировать `.env.example` в `.env`, заполнить локальные значения и выполнить `docker compose up --build`.
-- В каталоге `client` выполнить `npm install`, затем `npm run dev`.
-- Создать виртуальное окружение Python и установить зависимости командой `pip install -r server/requirements.txt`.
+```bash
+docker compose up --build
+```
 
-## Постановка задачи
+- приложение: http://localhost:5173
+- API: http://localhost:8000
 
-Полный перечень требований приведён в [TASK.md](TASK.md).
+## Локальная разработка
+
+Backend:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r server/requirements.txt
+python server/uvicorn_config.py
+```
+
+Frontend:
+
+```powershell
+Set-Location client
+npm ci
+npm run dev
+```
+
+## Проверка
+
+```powershell
+Set-Location client
+npm run lint
+npm run build
+```
+
+## Документация
+
+Исходные требования приведены в [TASK.md](TASK.md).
